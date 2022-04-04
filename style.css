@@ -1,0 +1,11 @@
+img{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+body{
+    /* background-color: rgba(79,77,86,255); */
+    background-color: whitesmoke;
+}
