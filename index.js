@@ -3,7 +3,7 @@ let query = window.sessionStorage.getItem(`q`);
 
 while (query == null) {
   query = prompt(`What would you like to see?`);
-  window.sessionStorage.setItem(`q`, query);
+  setSessionStorage(replaceWithHyphen(query));
 }
 
 if (query.includes(` `)) {
@@ -23,18 +23,14 @@ let pos = 0;
 
 //dom elements
 let hero = document.getElementById(`hero`);
+let searchbox = document.getElementById(`searchbar`);
+let lens = document.getElementById(`lens`);
 
 //Other global variables
 let buffer = limit - 1; //to be less than limit at all times
 let resultSet;
 let images = [];
 let current = 0;
-
-if (buffer >= limit) {
-  console.error(`buffer exceeds limit. adjusting...`);
-  buffer = limit - 5;
-  console.warn(`buffer set to ${buffer}`);
-}
 
 /********** Functions **********/
 main();
@@ -109,6 +105,10 @@ async function updatePage() {
  * Utility Functions
  */
 
+function setSessionStorage(query) {
+  window.sessionStorage.setItem(`q`, query);
+}
+
 function prepareImages(imageData) {
   console.log(`Preparing images`);
 
@@ -125,9 +125,7 @@ function updateImage(url) {
 }
 
 function replaceWithHyphen(string) {
-  console.log(string);
   let newString = string.replace(/ /g, `-`);
-  console.log(newString);
   return newString;
 }
 
@@ -136,7 +134,21 @@ function fallback() {
   updateImage(`img/2.gif`);
 }
 
+function setquery() {
+  let value = replaceWithHyphen(searchbox.value);
+  setSessionStorage(value);
+  query = value;
+  images = [];
+  main();
+}
+
+/**
+ * Event Listeners
+ */
 hero.addEventListener(`click`, () => {
   console.log(`Next image request`);
   updatePage();
 });
+
+searchbox.onchange = setquery;
+lens.onclick = setquery;
