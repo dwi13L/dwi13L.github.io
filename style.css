@@ -1,20 +1,31 @@
+:root{
+    --clr-neutral-900: hsl(207,19%,9%);
+    --clr-neutral-100: hsl(0,0%%,100%);
+    --clr-accent-400: hsl(142,90%,61%);
+  }
+
 *{
     box-sizing: border-box;
 }
 
 html, body {
     height: 99%;
+    background-color: var(--clr-neutral-900);
 }
 
 #container{
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
-#hero{
+.hero{
     max-width: 100%;
     height: auto;
+    box-shadow: 0 4px 8px 0 var(--clr-neutral-900);
+    transition: 0.3s;
+    background: var(--clr-neutral-100);
+    border-radius: 5%;
 }
