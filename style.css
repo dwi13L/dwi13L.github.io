@@ -38,14 +38,19 @@ html, body {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    padding: .5em;
 }
 
 #searchIcon{
-    height: 20px;
+    height: 30px;
     position: relative;
+    top: 2px;
 }
 
 .searchbar{
-    border-radius:50em;
+    padding: .5em;
+    border-radius:1em;
     border: none;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
