@@ -3,8 +3,9 @@ let query = window.sessionStorage.getItem(`q`);
 
 while (query == null) {
   query = prompt(`What would you like to see?`);
-  setSessionStorage(replaceWithHyphen(query));
 }
+
+setSessionStorage(replaceWithHyphen(query));
 
 if (query.includes(` `)) {
   query = replaceWithHyphen(query);
