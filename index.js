@@ -1,9 +1,18 @@
 //user input
 let query = window.sessionStorage.getItem(`q`);
 
-while (query == null) {
-  query = prompt(`What would you like to see?`);
+if (query == null) {
+  query = prompt(
+    `Don't panic!\nWhat would you like to see?\nYour favourite tv series perhaps?!`
+  );
 }
+
+if (query == null) {
+  alert("Well, since you didn't say anthing, I choose House MD");
+  query = "House md funny";
+}
+
+alert("Click on the image to see a new one");
 
 setSessionStorage(replaceWithHyphen(query));
 
